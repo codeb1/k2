@@ -9,6 +9,7 @@ var wg = new(sync.WaitGroup)
 func worker(s int){
 //	setLog("output%s.log",s)
      log.Printf("in worker %s\n",s)
+	 log.Printf("something")
     wg.Done()
 }
 func setLog(logpath string){

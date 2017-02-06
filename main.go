@@ -6,23 +6,21 @@ import "io"
 import "sync"
 
 var wg = new(sync.WaitGroup)
-func worker(s int){
-//	setLog("output%s.log",s)
-     log.Printf("in worker %s\n",s)
-	 log.Printf("something")
-    wg.Done()
+
+func worker(s int) {
+	log.Printf("in worker %d\n", s)
+	wg.Done()
 }
-func setLog(logpath string){
+func setLog(logpath string) {
 	file, err := os.Create(logpath)
-	if err	!= nil {
+	if err != nil {
 		panic(err)
 	}
 	log.SetOutput(io.Writer(file))
 }
-func main(){
+func main() {
 	setLog("output.log")
-	log.Printf("hello jacob \n")
-	for  i:=0; i < 10;  i ++ {
+	for i := 0; i < 10; i++ {
 		wg.Add(1)
 		go worker(i)
 	}

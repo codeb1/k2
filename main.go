@@ -13,6 +13,7 @@ func worker(s int, c chan int) {
 	wg.Done()
 }
 
+//    Consumer method
 func reader(c chan int) {
 	log.Printf("In reader\n")
 	for true {
